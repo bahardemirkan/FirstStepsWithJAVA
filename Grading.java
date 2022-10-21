@@ -9,8 +9,11 @@ public class Grading {
         Scanner score = new Scanner(System.in);
 
         double grade =score.nextDouble();
-
-        if (grade<50.0 && grade>=0.0){
+        if (grade<0.0 || grade>100.0){
+            System.out.println("Invalid score, program terminates.");
+            System.exit(0);
+        }
+        if (grade<50.0){
             System.out.println("You failed, FF");
         } else if (grade<60.0){
             System.out.println("You passed, DD");
@@ -28,8 +31,6 @@ public class Grading {
             System.out.println("You passed, AB");
         } else if (grade<=100.0){
             System.out.println("You passed, AA");
-        } else {
-            System.out.println("Invalid score, program terminates.");
         }
 
     }
