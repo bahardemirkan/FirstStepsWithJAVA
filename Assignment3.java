@@ -3,54 +3,61 @@ package Assignments;
 import java.util.Scanner;
 
 public class OddCount {
-    public static void loopBasedCount() {
-        System.out.println("Please enter a number:");
-        Scanner number = new Scanner(System.in);
-        int low = number.nextInt();
-        int high = number.nextInt();
-        int temp;
+
+    public static int loopBasedCount(int low, int high) {
+
         if (low > high) {
-            temp = low;
+           int temp = low;
             low = high;
             high = temp;
         }
-        while (true) {
-            if (low % 2 == 0 && high % 2 == 0) {
-                int count = (high - low) / 2;
-                System.out.printf("Loop Based Solution: In the interval [%d,%d], there are %d odd numbers ", low, high, count);
-                break;
-            } else {
-                int count = (high - low) / 2 + 1;
-                System.out.printf("Loop Based Solution: In the interval [%d,%d], there are %d odd numbers ", low, high, count);
-                break;
+        int count = 0;
+
+        for (int i=low; i<=high ; i++) {
+            if (i % 2 !=0) {
+                count++;
             }
         }
+        return count;
     }
-
-    public static void mathBasedCount() {
-        System.out.println("Please enter a number:");
-        Scanner number = new Scanner(System.in);
-        int low = number.nextInt();
-        int high = number.nextInt();
-        int temp;
+    public static int mathBasedCount(int low, int high) {
         if (low > high) {
-            temp = low;
+            int temp = low;
             low = high;
             high = temp;
-        }  else {
-            if (low % 2 == 0 && high % 2 == 0) {
-                int count = (high - low) / 2;
-                System.out.printf("Math Based Solution: In the interval [%d,%d], there are %d odd numbers", low, high, count);
-           }else {
-                int count = (high - low) / 2 + 1;
-                System.out.printf("Math Based Solution: In the interval [%d,%d], there are %d odd numbers", low, high, count);
+        }
+        int count;
+        if (low % 2 == 0 && high % 2 == 0) {
+                 count = (high - low) / 2;
+           }
+        else {
+                 count = (high - low) / 2 + 1;
             }
-
+        return count;
         }
-        }
-
     public static void main(String[] args) {
-        loopBasedCount();
-        mathBasedCount();
+        System.out.println("Please enter number:");
+        Scanner number = new Scanner(System.in);
+        int x = number.nextInt();
+        int y = number.nextInt();
+        if (x > y){
+            int temp;
+            temp = x;
+            x = y;
+            y = temp;
+        }
+        long start1= System.currentTimeMillis();
+        int cl = loopBasedCount(x,y);
+        long end1 = System.currentTimeMillis();
+        System.out.printf("Loop Based Solution: In the range [%d,%d], there are %d odd numbers\n", x,y,cl);
+
+        long start2 = System.currentTimeMillis();
+        int c = mathBasedCount(x,y);
+        long end2 = System.currentTimeMillis();
+        System.out.printf("Math Based Solution: In the range [%d,%d], there are %d odd numbers\n",x,y,c);
+
+        System.out.println(end1-start1);
+
+        System.out.println(end2-start2);
     }
     }
