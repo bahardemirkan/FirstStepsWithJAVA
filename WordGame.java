@@ -52,9 +52,9 @@ public class WordGame {
             String userGuess = scanner.nextLine();
 
             if (userGuess.equalsIgnoreCase(word)) {
-                System.out.println("Congratulations! Your guess is right.\n");
+                System.out.println("Congratulations! Your answer is right.\n");
             } else {
-                System.out.println("Sorry, wrong guess. The right guess is: " + word + "\n");
+                System.out.println("Sorry, wrong answer. The answer is: " + word + "\n");
             }
         }
 
